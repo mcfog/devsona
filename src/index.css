@@ -182,15 +182,148 @@ body {
 
 /* Responsive */
 @media (max-width: 600px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
   .container {
-    padding: 1rem;
+    padding: 0.75rem;
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .app-header {
+    padding: 0.75rem;
+  }
+
+  .card {
     padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Result page specific mobile optimizations */
+  .result-hero-card {
+    padding: 1rem !important;
+    border-top-width: 4px !important;
+  }
+
+  .result-avatar-container {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .result-type-code {
+    font-size: 2rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .result-type-title {
+    font-size: 1.25rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .result-summary {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .result-description-box {
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    line-height: 1.6 !important;
+    font-size: 0.9rem !important;
+  }
+
+  .result-analysis-section {
+    padding-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .result-analysis-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .result-analysis-card {
+    padding: 1rem !important;
+  }
+
+  .result-analysis-card h4 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .result-analysis-card p {
+    font-size: 0.85rem !important;
+  }
+
+  .result-section-title {
+    font-size: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .result-routine-box {
+    padding: 1rem !important;
+  }
+
+  .result-routine-list {
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    padding-left: 1rem !important;
+  }
+
+  .result-routine-list li {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .result-details-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .detail-card {
+    padding: 1rem !important;
+  }
+
+  .detail-card h3 {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .detail-card p {
+    font-size: 0.85rem !important;
+  }
+
+  .result-actions {
+    gap: 0.75rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .result-footer-link {
+    margin-top: 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Dimension guide mobile */
+  .dimension-guide {
+    padding: 1rem !important;
+    margin: 0.75rem auto 1rem auto !important;
+  }
+
+  .dimension-guide h3 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .dimension-guide .dim-item {
+    font-size: 0.8rem !important;
   }
 }

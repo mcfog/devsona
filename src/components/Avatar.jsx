@@ -34,9 +34,9 @@ export default function Avatar({ type, size = '200px' }) {
     // 1: Top-Rightish
     // 2: Bottom-Leftish
     const layers = [
-        { scale: 0.9, x: 0, y: 0, opacity: 0.2, rotation: rand(10) * 360 },
-        { scale: 0.5, x: 40, y: -40, opacity: 0.4, rotation: rand(11) * 360 }, // Offset from center
-        { scale: 0.6, x: -30, y: 40, opacity: 0.4, rotation: rand(12) * 360 }
+        { scale: 0.9, x: 0, y: 0, opacity: 0.35, rotation: rand(10) * 360 },
+        { scale: 0.5, x: 40, y: -40, opacity: 0.55, rotation: rand(11) * 360 },
+        { scale: 0.6, x: -30, y: 40, opacity: 0.55, rotation: rand(12) * 360 }
     ];
 
     const renderShape = (shapeType, layer, index) => {
@@ -44,7 +44,7 @@ export default function Avatar({ type, size = '200px' }) {
             fill: baseColor,
             opacity: layer.opacity,
             transform: `translate(${100 + layer.x}, ${100 + layer.y}) rotate(${layer.rotation}) scale(${layer.scale})`,
-            style: { mixBlendMode: 'multiply' }
+            style: { mixBlendMode: 'screen' }
         };
 
         // All shapes defined approx 100x100 centered at 0,0

@@ -121,30 +121,30 @@ export default function Result({ lang }) {
     const [showGuide, setShowGuide] = useState(false);
 
     return (
-        <div className="container animate-fade-in" style={{ paddingBottom: '4rem' }}>
+        <div className="container animate-fade-in" style={{ paddingBottom: '2rem' }}>
 
             {/* Type Card with Type-specific styling */}
-            <div className="card" style={{ padding: '3rem 2rem', textAlign: 'center', borderTop: `6px solid ${typeColor}` }}>
-                <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}>
-                    <Avatar type={type} size="200px" />
+            <div className="card result-hero-card" style={{ padding: '2rem 1.5rem', textAlign: 'center', borderTop: `6px solid ${typeColor}` }}>
+                <div className="result-avatar-container" style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
+                    <Avatar type={type} size="clamp(100px, 25vw, 160px)" />
                 </div>
 
-                <div style={{ position: 'relative', display: 'inline-block' }}>
-                    <h1 className="title" style={{ marginBottom: '0.5rem', fontSize: '3rem', color: typeColor }}>
+                <div className="hide-mobile" style={{ position: 'relative', display: 'inline-block' }}>
+                    <h1 className="title result-type-code" style={{ marginBottom: '0.25rem', fontSize: '2.5rem', color: typeColor }}>
                         {type}
                         <sup
                             onClick={() => setShowGuide(!showGuide)}
                             style={{
-                                fontSize: '1rem',
+                                fontSize: '0.8rem',
                                 color: 'var(--secondary-color)',
                                 cursor: 'pointer',
                                 opacity: 0.7,
-                                marginLeft: '0.5rem',
+                                marginLeft: '0.3rem',
                                 verticalAlign: 'super',
                                 border: '1px solid currentColor',
                                 borderRadius: '50%',
-                                width: '20px',
-                                height: '20px',
+                                width: '16px',
+                                height: '16px',
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 justifyContent: 'center'
@@ -156,15 +156,15 @@ export default function Result({ lang }) {
                     </h1>
                 </div>
 
-                <h2 style={{ fontSize: '1.8rem', color: 'var(--text-color)', marginTop: 0 }}>
+                <h2 className="result-type-title" style={{ fontSize: '1.5rem', color: 'var(--text-color)', marginTop: 0, marginBottom: '0.75rem' }}>
                     {resultData.title[lang]}
                 </h2>
 
                 {/* Dimensions Guide (Collapsible) - Focused on current type only */}
                 {showGuide && (
-                    <div className="animate-fade-in" style={{
-                        margin: '1rem auto 2rem auto',
-                        padding: '1.5rem',
+                    <div className="animate-fade-in dimension-guide" style={{
+                        margin: '0.75rem auto 1.5rem auto',
+                        padding: '1rem',
                         background: 'var(--bg-color)',
                         border: '1px solid var(--border-color)',
                         borderRadius: '8px',
@@ -183,7 +183,7 @@ export default function Result({ lang }) {
                                 const info = dim[side];
 
                                 return (
-                                    <div key={char} style={{ fontSize: '0.9rem', lineHeight: '1.5' }}>
+                                    <div key={char} className="dim-item" style={{ fontSize: '0.85rem', lineHeight: '1.4' }}>
                                         <span style={{ fontWeight: 'bold', color: typeColor, width: '20px', display: 'inline-block' }}>{char}</span>
                                         <strong style={{ color: 'var(--text-color)' }}> - {info.label[lang]}: </strong>
                                         <span style={{ color: 'var(--secondary-color)' }}>
@@ -211,53 +211,53 @@ export default function Result({ lang }) {
                     </div>
                 )}
 
-                <p style={{ fontSize: '1.1rem', color: typeColor, fontWeight: 'bold' }}>
+                <p className="result-summary" style={{ fontSize: '1rem', color: typeColor, fontWeight: 'bold', marginBottom: '1rem' }}>
                     {resultData.summary[lang]}
                 </p>
 
-                <div style={{ margin: '2rem 0', lineHeight: '1.8', textAlign: 'left', background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '8px' }}>
+                <div className="result-description-box" style={{ margin: '1.5rem 0', lineHeight: '1.7', textAlign: 'left', background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '8px' }}>
                     <p
-                        style={{ marginTop: 0 }}
+                        style={{ marginTop: 0, marginBottom: 0, fontSize: '0.95rem' }}
                         dangerouslySetInnerHTML={{ __html: resultData.description[lang] }}
                     />
                 </div>
 
                 {/* Dynamic Analysis Section (Shown if we have calculated state) */}
                 {analysisState.strongestChar && analysisState.weakestKey && (
-                    <div style={{ marginBottom: '3rem', textAlign: 'left', borderTop: '1px solid var(--border-color)', paddingTop: '2rem' }}>
-                        <h3 style={{ color: 'var(--text-color)', marginBottom: '1.5rem', textAlign: 'center' }}>
+                    <div className="result-analysis-section" style={{ marginBottom: '2rem', textAlign: 'left', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
+                        <h3 className="result-section-title" style={{ color: 'var(--text-color)', marginBottom: '1rem', textAlign: 'center', fontSize: '1.1rem' }}>
                             {lang === 'cn' ? '深度辨析' : 'Deep Analysis'}
                         </h3>
 
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                        <div className="result-analysis-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
                             {/* Strongest */}
-                            <div style={{
-                                background: `${typeColor}15`, // Low opacity background
-                                padding: '1.5rem',
+                            <div className="result-analysis-card" style={{
+                                background: `${typeColor}15`,
+                                padding: '1rem',
                                 borderRadius: '8px',
                                 borderLeft: `4px solid ${typeColor}`
                             }}>
-                                <h4 style={{ margin: '0 0 0.5rem 0', color: typeColor }}>
+                                <h4 style={{ margin: '0 0 0.4rem 0', color: typeColor, fontSize: '0.95rem' }}>
                                     {lang === 'cn' ? '核心优势: ' : 'Core Advantage: '}
                                     {getStrongestLabel()}
                                 </h4>
-                                <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-color)' }}>
+                                <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-color)' }}>
                                     {getStrongestText()}
                                 </p>
                             </div>
 
                             {/* Weakest (Flexibility) */}
-                            <div style={{
+                            <div className="result-analysis-card" style={{
                                 background: 'rgba(168, 162, 158, 0.1)',
-                                padding: '1.5rem',
+                                padding: '1rem',
                                 borderRadius: '8px',
                                 borderLeft: '4px solid #a8a29e'
                             }}>
-                                <h4 style={{ margin: '0 0 0.5rem 0', color: '#a8a29e' }}>
+                                <h4 style={{ margin: '0 0 0.4rem 0', color: '#a8a29e', fontSize: '0.95rem' }}>
                                     {lang === 'cn' ? '因地制宜: ' : 'Adaptive Trait: '}
                                     {getWeakestLabel()}
                                 </h4>
-                                <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-color)' }}>
+                                <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-color)' }}>
                                     {getFlexibleText()}
                                 </p>
                             </div>
@@ -267,14 +267,14 @@ export default function Result({ lang }) {
 
                 {/* Daily Routine Section */}
                 {resultData.dailyRoutine && (
-                    <div style={{ marginBottom: '3rem', textAlign: 'left' }}>
-                        <h3 style={{ color: 'var(--text-color)', marginBottom: '1rem', textAlign: 'center' }}>
+                    <div style={{ marginBottom: '2rem', textAlign: 'left' }}>
+                        <h3 className="result-section-title" style={{ color: 'var(--text-color)', marginBottom: '0.75rem', textAlign: 'center', fontSize: '1.1rem' }}>
                             {resultData.dailyRoutine.title[lang]}
                         </h3>
-                        <div style={{ background: 'var(--bg-color)', padding: '1.5rem', borderRadius: '8px', border: '1px dashed var(--border-color)' }}>
-                            <ul style={{ margin: 0, paddingLeft: '1.2rem', color: 'var(--secondary-color)', lineHeight: '1.8' }}>
+                        <div className="result-routine-box" style={{ background: 'var(--bg-color)', padding: '1rem', borderRadius: '8px', border: '1px dashed var(--border-color)' }}>
+                            <ul className="result-routine-list" style={{ margin: 0, paddingLeft: '1rem', color: 'var(--secondary-color)', lineHeight: '1.6', fontSize: '0.9rem' }}>
                                 {resultData.dailyRoutine.items[lang].map((item, idx) => (
-                                    <li key={idx} style={{ marginBottom: '0.5rem' }}>{item}</li>
+                                    <li key={idx} style={{ marginBottom: '0.4rem' }}>{item}</li>
                                 ))}
                             </ul>
                         </div>
@@ -282,20 +282,19 @@ export default function Result({ lang }) {
                 )}
 
                 {/* Standard Details */}
-                <div style={{ textAlign: 'left', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+                <div className="result-details-grid" style={{ textAlign: 'left', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
                     <DetailCard title={lang === 'cn' ? '工作模式' : 'Work Mode'} content={resultData.workMode[lang]} />
                     <DetailCard title={lang === 'cn' ? '核心价值' : 'Core Value'} content={resultData.value[lang]} />
                     <DetailCard
                         title={lang === 'cn' ? '潜在风险' : 'Potential Blind Spot'}
                         content={
-                            // Prefer calculated strongest char, fallback to first letter of type
                             resultData.blindSpots[analysisState.strongestChar || type[0]][lang]
                         }
                         highlight
                     />
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <div className="result-actions" style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <button className="btn" onClick={() => navigate('/')} style={{ background: typeColor, color: '#fff' }}>
                         {lang === 'cn' ? '回到首页' : 'Home'}
                     </button>
@@ -305,14 +304,14 @@ export default function Result({ lang }) {
                     </button>
                 </div>
 
-                <div style={{ marginTop: '2rem' }}>
+                <div className="result-footer-link" style={{ marginTop: '1.5rem' }}>
                     <span
                         onClick={() => navigate('/types')}
                         style={{
                             cursor: 'pointer',
                             color: 'var(--secondary-color)',
                             textDecoration: 'underline',
-                            fontSize: '0.9rem'
+                            fontSize: '0.85rem'
                         }}
                     >
                         {lang === 'cn' ? '查看所有16种类型' : 'View All 16 Types'}
@@ -325,14 +324,14 @@ export default function Result({ lang }) {
 
 function DetailCard({ title, content, highlight }) {
     return (
-        <div style={{
+        <div className="detail-card" style={{
             background: highlight ? 'rgba(218, 54, 51, 0.1)' : 'var(--bg-color)',
-            padding: '1.5rem',
+            padding: '1rem',
             borderRadius: '8px',
             border: `1px solid ${highlight ? '#da3633' : 'var(--border-color)'}`
         }}>
-            <h3 style={{ marginTop: 0, marginBottom: '0.8rem', fontSize: '1.1rem', color: highlight ? '#ff6b6b' : 'var(--text-color)' }}>{title}</h3>
-            <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--secondary-color)' }}>{content}</p>
+            <h3 style={{ marginTop: 0, marginBottom: '0.5rem', fontSize: '1rem', color: highlight ? '#ff6b6b' : 'var(--text-color)' }}>{title}</h3>
+            <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--secondary-color)' }}>{content}</p>
         </div>
     );
 }
